@@ -1,0 +1,59 @@
+#!/usr/bin/perl -w 
+
+use Asterisk::AGI; 
+use LWP::UserAgent; 
+use DBI;
+
+$AGI = new Asterisk::AGI; 
+
+
+my %input = $AGI->ReadParse(); 
+
+my ($exten) = @ARGV; 
+
+if($exten eq ''){ 
+$exten=$input{'$EXTEN'}; 
+} 
+
+$exten = substr($exten,2) ;
+$exten =~ s/\D//g;
+$AGI->verbose("EXTEN IS: $exten\n"); 
+
+
+$AGI->verbose("Ready for AsteriDex lookup... \n");
+if ($realdude = &asteridex_lookup ($exten)) { 
+ my($realexten,$realname) = split(/=:SeParAtor:=/o,$realdude);
+ $AGI->verbose("AsteriDex match. Number to Dial = $realexten\n");
+ $AGI->verbose("AsteriDex match. Person to Dial = $realname\n"); 
+ $realname =~ s/[\,\"\'\(\)\_\ ]+/-/g;
+ $AGI->set_variable('DIAL', $realexten);
+ $AGI->set_variable('DUDE', $realname); 
+}
+else{ 
+$AGI->verbose("Unable to find an AsteriDex match.\n"); 
+$AGI->set_variable('DIAL', '00');
+} 
+
+exit(0); 
+
+sub asteridex_lookup {
+my ($exten) = @_;
+my $dbh = DBI->connect("dbi:mysql:asteridex","root","passw0rd") or die("Connect failed");
+my $sth = $dbh->prepare("select * from user1 where dialcode = '$exten'") or die("Prepare failed.");
+$sth->execute;
+if($sth->rows == 0)
+{
+        return "";
+}
+else
+{
+ my $resptr =  $sth->fetchrow_hashref();
+ my $dialnum = $resptr->{"out"};
+ my $dialname = $resptr->{"name"};
+ return ($dialnum?($dialnum . "=:SeParAtor:=" . $dialname):"");
+}
+
+$dbh->disconnect;
+return "";
+}
+
