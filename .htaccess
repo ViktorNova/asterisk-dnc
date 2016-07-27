@@ -1,0 +1,14 @@
+AuthUserFile /var/www/html/dnc/.htpasswd
+AuthName "DNC Admin Login"
+AuthType Basic
+
+require valid-user
+
+# If the DNC list still doesn't ask for a password, you may need
+# to add the following lines to the bottom of your Apache config
+# file (uncomment them of course)
+# On PBX in a Flash, this file is /etc/httpd/conf/httpd.conf
+
+#<Directory "/var/www/html/dnc">
+#AllowOverride ALL
+#</Directory>

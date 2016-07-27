@@ -66,6 +66,8 @@ if ($AddButton=="Add New Record") :
    $ErrorFlag = True ;
    $MSG .= "Contact Number cannot be blank. "   ;
  endif ;
+$OUT = str_replace("-","",$OUT);
+
  /*
  if ($IN<>"*" AND $IN<"1") :
    $ErrorFlag = True ;
