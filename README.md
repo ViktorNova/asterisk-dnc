@@ -12,6 +12,8 @@ git clone https://github.com/ViktorNova/asterisk-dnc.git dnc
 chown -R asterisk:asterisk dnc
 cd dnc
 
+
+
 ##Create database
 Using Adminer, PHPMyAdmin, or the commandline, create the following database & user:
   - DB Name: dncdb
@@ -19,6 +21,12 @@ Using Adminer, PHPMyAdmin, or the commandline, create the following database & u
   - DB Password: password
 The example configs in this repo use these credentials for ease of use.. 
 Obviously don't *actually* use 'password' as your password - just make sure you update config.inc.php and the Asterisk config script to use your actual password
+
+##Create audio announcement
+When someone dials a blacklisted number, you want to play them a recording letting them know why their call did not go through. 
+  - In FreePBX, go to Admin -> System Recordings
+  - Add a new recording, and upload the Viktor-DoNotCall.wav file from this repository
+  - Leave the name as is (note, you can use your own file too, just be sure and modify the Asterisk config below to reflect the name of your recording. If you use the provided recording and keep the name, no modification of that section is needed)
 
 ##Edit Asterisk config
 Add this to your Asterisk config. I put mine at the end of extension_custom.conf
@@ -51,6 +59,7 @@ exten => s,n,MYSQL(Clear ${resultid}); can check for error condition here if "${
 exten => s,n,NoOp(Found ${count} occurrences in Asteridex blacklist)
 exten => s,n,GotoIf($[${count} = 0]?next)
 exten => s,n(begin),Noop(Playing announcement DNC List)
+; Play the system recording. MODIFY THIS NEXT LINE IF YOU USE YOUR OWN RECORDING
 exten => s,n,Playback(custom/Viktor-DoNotCall,noanswer)
 exten => s,n,Noop(number blacklisted, ending call); add whatever you need to alert the caller that the number is blocked
 exten => s,n,Hangup() ; or redirect to some other destination
