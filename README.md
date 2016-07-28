@@ -12,13 +12,12 @@ git clone https://github.com/ViktorNova/asterisk-dnc.git dnc
 chown -R asterisk:asterisk dnc
 cd dnc
 
-
-
-##Create database
+##Create database and import tables
 Using Adminer, PHPMyAdmin, or the commandline, create the following database & user:
   - DB Name: dncdb
   - DB User: dnc
   - DB Password: password
+  - Import mysql/asteridex.sql into your newly created database
 The example configs in this repo use these credentials for ease of use.. 
 Obviously don't *actually* use 'password' as your password - just make sure you update config.inc.php and the Asterisk config script to use your actual password
 
