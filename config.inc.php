@@ -8,7 +8,7 @@ $sub_title = "Welcome to the Do-Not-Call List";
 //mysql database connection settings
 $dbhost = "localhost";
 $dbpass = "passw0rd";
-$dbuser = "root";
+$dbuser = "dnc";
 $dbname = "asteridex";
 
  $dbconnection = mysql_connect($dbhost, $dbuser, $dbpass)
