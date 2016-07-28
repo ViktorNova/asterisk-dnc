@@ -18,8 +18,10 @@ Using Adminer, PHPMyAdmin, or the commandline, create the following database & u
   - DB User: dnc
   - DB Password: password
   - Import mysql/asteridex.sql into your newly created database
+  - 
 The example configs in this repo use these credentials for ease of use.. 
 Obviously don't *actually* use 'password' as your password - just make sure you update config.inc.php and the Asterisk config script to use your actual password
+
 
 ##Create audio announcement
 When someone dials a blacklisted number, you want to play them a recording letting them know why their call did not go through. 
