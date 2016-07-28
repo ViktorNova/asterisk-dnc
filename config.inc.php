@@ -7,9 +7,9 @@ $sub_title = "Welcome to the Do-Not-Call List";
 
 //mysql database connection settings
 $dbhost = "localhost";
-$dbpass = "passw0rd";
+$dbpass = "password";
 $dbuser = "dnc";
-$dbname = "asteridex";
+$dbname = "dnc";
 
  $dbconnection = mysql_connect($dbhost, $dbuser, $dbpass)
     or die("Database connection failed");
