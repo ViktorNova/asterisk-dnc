@@ -1,2 +1,2 @@
 #!/bin/bash
-mysql -uroot -ppassw0rd < asteridex.sql
+mysql -udnc -ppassword < asteridex.sql
