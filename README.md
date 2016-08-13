@@ -43,7 +43,7 @@ You can also add a list of extensions that you would like to be able to dial bla
 ; ------------------------------------------------------------------------------------------
 
 [macro-dialout-trunk-predial-hook]
-exten => s,1,NOOP(Checking outbound number against Asteridex blacklist)
+exten => s,1,NOOP(Checking outbound number against do-not-call list)
 ;The next bunch of lines are extensions whose calls are NOT checked against the DNC list.
 ;In other words, these extensions can call numbers that are blacklisted for everyone else
 exten => s,n,GotoIf($[${REALCALLERIDNUM} = 400]?next)
@@ -53,12 +53,13 @@ exten => s,n,GotoIf($[${REALCALLERIDNUM} = 403]?next)
 ; This next section checks all outbound calls against the DNC list
 ; DON'T FORGET TO CHANGE 'password' TO YOUR ACTUAL DNC DATABASE PASSWORD!
 exten => s,n,MYSQL(Connect connid localhost dnc password dncdb)  ;this should work with stock PIAF, alter credentials to suit; can check for error condition here for ${conid} = ""
-exten => s,n,NoOp(Connected to asteridex with mysql connection id: ${connid});the following lines query Asteridex dbase and return the number of ocurences of the number to the variable 'count'
+exten => s,n,NoOp(Connected to DNC database with MySql connection id: ${connid})
+; The following lines query DNC database and return the number of ocurences of the number to the variable 'count'
 exten => s,n,MYSQL(Query resultid ${connid} SELECT count(`id`) FROM `user1` WHERE `out` LIKE '%${OUTNUM:-10}%')
 exten => s,n,MYSQL(Fetch fetchid ${resultid} count)
 exten => s,n,MYSQL(Clear ${resultid}); can check for error condition here if "${fetchid}" = "0"
 exten => s,n,MYSQL(Disconnect ${connid})
-exten => s,n,NoOp(Found ${count} occurrences in Asteridex blacklist)
+exten => s,n,NoOp(Found ${count} occurrences in do-not-call list)
 exten => s,n,GotoIf($[${count} = 0]?next)
 exten => s,n(begin),Noop(Playing announcement DNC List)
 ; Play the system recording. MODIFY THIS NEXT LINE IF YOU USE YOUR OWN RECORDING
