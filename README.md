@@ -57,6 +57,7 @@ exten => s,n,NoOp(Connected to asteridex with mysql connection id: ${connid});th
 exten => s,n,MYSQL(Query resultid ${connid} SELECT count(`id`) FROM `user1` WHERE `out` LIKE '%${OUTNUM:-10}%')
 exten => s,n,MYSQL(Fetch fetchid ${resultid} count)
 exten => s,n,MYSQL(Clear ${resultid}); can check for error condition here if "${fetchid}" = "0"
+exten => s,n,MYSQL(Disconnect ${connid})
 exten => s,n,NoOp(Found ${count} occurrences in Asteridex blacklist)
 exten => s,n,GotoIf($[${count} = 0]?next)
 exten => s,n(begin),Noop(Playing announcement DNC List)
