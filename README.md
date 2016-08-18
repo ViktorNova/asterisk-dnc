@@ -71,7 +71,11 @@ exten => s,n(next),Noop(Not blacklisted, call continues ...)
 ````
 
 #Log in to the web interface
+
 Go to ````https://yourserver/dnc````
+
 The default username and password are ````admin password````
+
 Be sure and change this by updating the .htaccess file
+
 The rest is self explanitory
