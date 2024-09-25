@@ -9,6 +9,13 @@ include_once("config.inc.php");
 <head>
 	<title><?php echo $title; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+    	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    	<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+	<link rel="manifest" href="./site.webmanifest">
+	<link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+
 	<style type="text/css" media="screen">@import "basic.css";</style>
 	<style type="text/css" media="screen">@import "tabs.css";</style>
 </head>
@@ -20,8 +27,13 @@ include_once("config.inc.php");
 
 <body>
 
-	<h1><?php echo $title; ?></h1>
-		<a href="admin.php"><div class="loginButton">Add Number</div></a>
+	<div class="logo">
+	</div>
+
+	        <div class="title">
+                    <h1 class="title"><?php echo $title; ?></h1>
+                </div>
+	<a href="admin.php"><div class="loginButton">Add Number</div></a>
 
 	<div id="header">
 	<ul id="primary">

@@ -53,7 +53,7 @@ h2 {
 /* Below styles by Viktor Nova - LCARS-ish theme */
 
 
-  html {
+html {
     background-color: #000000;
     color: #8f8f8f;
 }
@@ -65,6 +65,20 @@ h2 {
 
 #contents {
     background-color: #00aaff;
+}
+
+
+div.title,h1.title {
+    display: inline;
+}
+
+div.logo {
+    background: url("apple-touch-icon.png");
+    background-size: cover;
+    width: 44px;
+    height: 44px;
+    display: inline-block;
+    margin-bottom: -10px;
 }
 
 div.dncName {
