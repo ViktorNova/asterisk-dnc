@@ -8,10 +8,7 @@
 -- (c) Ward Mundy, 2005. All rights reserved.
 -- 
 -- 
--- Database: `asteridex`
 -- 
-CREATE DATABASE `asteridex`;
-USE asteridex;
 
 -- --------------------------------------------------------
 
