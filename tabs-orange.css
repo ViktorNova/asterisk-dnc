@@ -1,6 +1,6 @@
 #main {
 	clear: both;
-	background: #00aaff;
+	background: #FF930F;
 	padding-top: 2em;
 }
 
@@ -40,7 +40,7 @@
 	font-family: impact, tahoma, verdana, sans-serif;
 	font-size: 85%;
 	text-decoration: none;
-	color: #00aaff;
+	color: #FF930F;
 	font-weight: normal;
 
 }
@@ -48,7 +48,7 @@
 #header ul#primary span,#header ul#primary a.current,#header ul#primary a.current:hover {
 	border: none;
 	border-bottom: none;
-	background: #00aaff;
+	background: #FF930F;
 	padding-bottom: 6px;
 	margin-top: 0;
 	border-radius: 10px 10px 0 0 ;
@@ -57,14 +57,14 @@
 }
 
 #header ul#primary a {
-	border: 2px solid #00aaff;
+	border: 2px solid #FF930F;
 	border-bottom: none;
 	border-radius: 10px 10px 0 0 ;
 }
 
 #header ul#primary a:hover {
 	margin-top: 0;
-	background: #00aaff;
+	background: #FF930F;
 	padding-bottom: 5px;
 	color: #000000;
 }

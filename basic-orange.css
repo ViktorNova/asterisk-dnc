@@ -64,7 +64,7 @@ h2 {
 }
 
 #contents {
-    background-color: #00aaff;
+    background-color: #ff930f;
 }
 
 div.dncName {
@@ -72,12 +72,12 @@ div.dncName {
 }
 
 html body h1 {
-    color: #00aaff;
+    color: #ff930f;
 }
 
 .note {
     background-color: #000000;
-    color: #00aaff;
+    color: #FF930F;
     border-radius: 20px;
     padding: 0 16px 0 16px;
     font-family: Helvetica, sans-serif;
@@ -90,7 +90,7 @@ html body h1 {
 
 .loginButton {
 	border: none;
-	background: #00aaff;
+	background: #FF930F;
 	padding-bottom: 6px;
 	border-radius: 10px;
 	color: #000000;
